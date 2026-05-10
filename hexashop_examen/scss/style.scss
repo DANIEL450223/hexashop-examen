@@ -1,0 +1,281 @@
+$gris: #d9d9d9;
+$fondo: #eeeeee;
+$negro: #111;
+$footer: #1b1b1b;
+$blanco: #fff;
+$rojo: red;
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin movil {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: $fondo;
+  color: $negro;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.header {
+  flex-direction: column;
+  height: 65px;
+  background: $gris;
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet {
+    padding: 0 32px;
+  }
+
+  @include movil {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 16px;
+    
+    gap: 16px;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__logo {
+    width: 42px;
+    height: 42px;
+    background: $negro;
+    color: $blanco;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  }
+
+  &__name,
+  &__text {
+    display: block;
+  }
+
+  &__name {
+    font-size: 15px;
+  }
+
+  &__text {
+    font-size: 8px;
+  }
+
+  &__logo--footer {
+    background: $blanco;
+    color: $negro;
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 32px;
+
+  &__link {
+    font-size: 15px;
+  }
+
+  @include tablet {
+    gap: 16px;
+  }
+
+  @include movil {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.main {
+  padding-top: 64px;
+  text-align: center;
+}
+
+.product {
+  &__title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  &__figure,
+  &__card {
+    width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__figure {
+    height: 430px;
+  }
+
+  &__card {
+    min-height: 135px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    padding: 32px;
+    background: $gris;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  &__name {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__icon {
+    border: 0;
+    background: none;
+    font-size: 32px;
+  }
+
+  &__icon--heart {
+    color: $rojo;
+  }
+
+  &__icon--cart {
+    color: $negro;
+  }
+
+  &__button {
+    padding: 10px 14px;
+    border: 3px solid $negro;
+    border-radius: 8px;
+    background: transparent;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  @include movil {
+    &__figure,
+    &__card {
+      width: 90%;
+    }
+
+    &__figure {
+      height: 360px;
+    }
+  }
+}
+
+.gallery {
+  margin-top: 64px;
+  padding: 0 80px 64px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  overflow: hidden;
+
+  &__item {
+    width: 205px;
+    height: 205px;
+    flex-shrink: 0;
+  }
+
+  @include tablet {
+    flex-wrap: wrap;
+    padding: 0 32px 48px;
+  }
+
+  @include movil {
+    &__item {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+
+.footer {
+  background: $footer;
+  color: $blanco;
+
+  &__content {
+    padding: 32px 80px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+
+  &__box a,
+  &__text {
+    display: block;
+    margin-bottom: 16px;
+    color: #dcdcdc;
+    font-size: 12px;
+    font-style: normal;
+  }
+
+  &__title {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  &__copy {
+    background: $negro;
+    text-align: center;
+    padding: 16px;
+    font-size: 10px;
+  }
+
+  @include tablet {
+    &__content {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 32px;
+    }
+  }
+
+  @include movil {
+    &__content {
+      grid-template-columns: 1fr;
+    }
+  }
+}
